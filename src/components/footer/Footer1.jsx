@@ -88,36 +88,31 @@ const Footer1 = () => {
         quickLink: [
             {
                 id: 1,
-                name: "Home",
-                url: "/"
-            },
-            {
-                id: 2,
                 name: "Shop",
                 url: "/"
             },
             {
-                id: 3,
+                id: 2,
                 name: "New Arrivals",
                 url: "/"
             },
             {
-                id: 4,
+                id: 3,
                 name: "Collections",
                 url: "/"
             },
             {
-                id: 5,
+                id: 4,
                 name: "About Us",
                 url: "/"
             },
             {
-                id: 6,
+                id: 5,
                 name: "Blog",
                 url: "/"
             },
             {
-                id: 7,
+                id: 6,
                 name: "Contact",
                 url: "/"
             },
@@ -169,7 +164,7 @@ const Footer1 = () => {
     const renderColumn = (items) => {
         const arrColumn = items.map((item) => {
             return (
-                <FooterColumn1 key={items.id} item={item} />
+                <FooterColumn1 key={item.id} item={item} />
             )
         })
         return arrColumn;
@@ -194,7 +189,7 @@ const Footer1 = () => {
         <footer style={{ background: "#0e1b1f" }}>
             <div className='container'>
                 <div className='row footer_title' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <div className='col-3'>
+                    <div className='col-3 p-3'>
                         <a href='/'>
                             <BrandIconFooter />
                         </a>
@@ -207,7 +202,7 @@ const Footer1 = () => {
                             Follow your passion, stay strong through hard times.
                             Keep trying today, and thank yourself tomorrow.
                         </p>
-                        <div className='socal_media d-flex gap-3 p-3'>
+                        <div className='socal_media d-flex'>
                             {renderSocialMedia()}
                         </div>
                     </div>

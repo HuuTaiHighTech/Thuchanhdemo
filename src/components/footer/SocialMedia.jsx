@@ -1,12 +1,13 @@
 import React from 'react'
 
 const SocialMedia = (props) => {
-    const {item} = props;
+  const { item } = props;
   return (
-    <a
+    <div className='wrapper p-3'>
+      <a
         href={item.link}
         className='wrapper ratio ratio-1x1 overflow-hidden'
-        style={{ width: "40px", maxWidth: "40px", display: "block"}}
+        style={{ width: "24px", maxWidth: "40px", display: "block"}}
         title={item.name}
       >
         <img
@@ -15,6 +16,7 @@ const SocialMedia = (props) => {
           className="w-100 h-100 object-fit-cover"
         />
       </a>
+    </div>
   )
 }
 

@@ -1,0 +1,67 @@
+
+.wrapper h4 {
+  margin: 0;
+  padding: 20px 0;
+}
+
+.header-brand,
+.header-brand a,
+.header-brand-logo {
+  flex-shrink: 0;
+}
+
+.header-brand-logo {
+  display: block;
+  width: 178px;
+  height: 69px;
+  max-width: none;
+}
+
+@media (max-width: 575.98px) {
+    .header_right {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+    .header_right .wrapper {
+        padding: 2px !important;
+    }
+    .header_right .icon {
+        width: 18px;
+        height: 18px;
+        display: block;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 992px) {
+    .footerLeft .brand,
+  .footerLeft .socal_media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+    .footerSecond {
+        text-align: center;
+    }
+    .footerSecond > p {
+        display: inline-block;
+        margin: 0 8px;
+    }
+    .footer-third {
+        text-align: center;
+    }
+    .footer-third > p {
+        display: inline-block;
+        margin: 0 8px;
+    }
+    .footer-final {
+        text-align: center;
+    }
+    .footer-final .method_cart {
+        justify-content: center;
+        align-items: center;
+    }
+    .footer-copyright {
+        text-align: center;
+    }
+}
