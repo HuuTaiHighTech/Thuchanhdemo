@@ -16,7 +16,13 @@
   height: 69px;
   max-width: none;
 }
-
+/* trước hover  */
+.category .product {
+    border-radius: 4px;
+}
+.category .product:hover {
+    background-color: white;
+}
 @media (max-width: 575.98px) {
     .header_right {
         display: flex;

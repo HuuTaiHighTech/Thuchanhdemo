@@ -1,12 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BrandIcon from '../common/icons/BrandIcon'
-import SearchIcon from '../common/icons/SearchIcon'
-import UserIcon from '../common/icons/UserIcon'
-import HeartIcon from '../common/icons/HeartIcon'
-import CartIcon from '../common/icons/CartIcon'
 import NavBar1 from './NavBar1'
 import IconHeaderRight from '../common/icons/IconHeaderRight'
 import MenuIcon from '../common/icons/MenuIcon'
+import MobileMenuModal from './MobileMenuModal'
 const data = {
     navbarItems: [
         {
@@ -15,8 +12,42 @@ const data = {
             link: '#',
             dropdown: true,
             dropdownItems: [
-                { id: 1, name: 'Men', link: '#' },
-                { id: 2, name: 'Women', link: '#' },
+                {
+                    id: 1,
+                    name: 'Men',
+                    shoes: [
+                        {
+                            id: 101,
+                            name: 'Air Runner',
+                            brand: 'Nike',
+                            shortDescription: 'Lightweight running shoes for everyday training.'
+                        },
+                        {
+                            id: 102,
+                            name: 'Ultraboost',
+                            brand: 'Adidas',
+                            shortDescription: 'Responsive cushioning for long-distance comfort.'
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    name: 'Women',
+                    shoes: [
+                        {
+                            id: 201,
+                            name: 'Cloudswift',
+                            brand: 'On',
+                            shortDescription: 'A cushioned road shoe for daily runs.'
+                        },
+                        {
+                            id: 202,
+                            name: 'Fresh Foam 1080',
+                            brand: 'New Balance',
+                            shortDescription: 'Soft, supportive comfort for everyday wear.'
+                        }
+                    ]
+                },
             ]
         },
         { id: 2, name: 'New Arrivals', link: '#', dropdown: false },
@@ -27,17 +58,25 @@ const data = {
     ]
 }
 
-const renderNavbar = () => {
-    const arrNavbar = data.navbarItems.map((item) => {
-        return (
-            <NavBar1 key={item.id} item={item} />
-        )
-    })
 
-    return arrNavbar;
-}
 
 const Header = () => {
+    const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+    const renderNavbar = () => {
+    const arrNavbar = data.navbarItems.map((item) => {
+        return (
+            item.dropdown ? (
+            <NavBar1 key={item.id} item={item} isOpen={isOpenDropdown} onMouseEnter={() => setIsOpenDropdown(true)}
+  onMouseLeave={() => setIsOpenDropdown(false)}
+                onToggle={() => setIsOpenDropdown((open) => !open)}
+            />
+            ) : (
+            <NavBar1 key={item.id} item={item} />
+            )
+        )
+    })
+    return arrNavbar;
+}
     return (
         <header className="header">
             <div className='container'>
@@ -50,12 +89,15 @@ const Header = () => {
                             <BrandIcon />
                         </div>
                     </div>
-                    <div className='col-lg-7 d-none d-lg-flex justify-content-center'>
+                    <div className='col-lg-7 d-none d-lg-flex justify-content-center gap-3'>
                         {renderNavbar()}
                     </div>
                     <div className='header_right col-lg-3 col-4 d-flex justify-content-end'>
                         <IconHeaderRight />
                     </div>
+                </div>
+                <div id="mobileMenuCollapse" className="collapse">
+                    <MobileMenuModal renderNavbar={renderNavbar} />
                 </div>
             </div>
         </header>

@@ -1,18 +1,55 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ArrowBelow from '../common/icons/ArrowBelow';
 
 const NavBar1 = (props) => {
-    const { item } = props;
-  return (
-    <ul className='list-unstyled d-inline mb-0'>
-        <li className='d-inline' style={{padding: "20px 10px"}}>
-            <a href={item.link} className='text-decoration-none text-black'>
-                {item.name}
-            </a>
-            {item.dropdown && <ArrowBelow />}
-        </li>
-    </ul>
-  )
+    const {item, isOpen, onMouseEnter, onMouseLeave} = props;
+    const [hoveredCategoryId, setHoveredCategoryId] = useState(null);
+
+    return (
+        <ul className='list-unstyled mb-0'>
+            <li
+                className='d-inline position-relative'
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={() => {
+                    onMouseLeave?.();
+                    setHoveredCategoryId(null);
+                }}
+            >
+                <a href={item.link} className='text-decoration-none text-black'>
+                    {item.name}
+                </a>
+                {item.dropdown && <ArrowBelow />}
+                {item.dropdown && isOpen && (
+                    <ul
+                        className='list-unstyled d-flex flex-column gap-3 position-absolute top-100 start-0'
+                        style={{backgroundColor: '#f55f8d', borderRadius: '5px', padding: '10px', width: 'max-content'}}
+                    >
+                        {item.dropdownItems.map((category) => (
+                            <li
+                                key={category.id}
+                                className='ms-3 position-relative'
+                                onMouseEnter={() => setHoveredCategoryId(category.id)}
+                            >
+                                <span className='fw-bold'>
+                                    {category.name}
+                                    <i className="fa-solid fa-angle-down ms-2" aria-hidden="true"></i>
+                                </span>
+                                {hoveredCategoryId === category.id && (
+                                    <ul className='category list-unstyled' style={{borderRadius: '5px', padding: '10px', width: 'max-content'}}>
+                                        {category.shoes.map((shoe) => (
+                                            <li key={shoe.id} className='mb-2'>
+                                                <div className='product text-black'>{shoe.name}</div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </li>
+        </ul>
+    )
 }
 
 export default NavBar1
