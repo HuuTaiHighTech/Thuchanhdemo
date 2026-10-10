@@ -16,12 +16,17 @@
   height: 69px;
   max-width: none;
 }
-/* trước hover  */
-.category .product {
-    border-radius: 4px;
+.dropdown > .dropdown-content {
+    position: relative;
+     visibility: hidden;
+     opacity: 0;
+     transform: scale(0.95);
 }
-.category .product:hover {
-    background-color: white;
+.dropdown:hover > .dropdown-content {
+    position: absolute;
+    visibility: visible;
+    opacity: 100;
+    transform: scale(1);
 }
 @media (max-width: 575.98px) {
     .header_right {

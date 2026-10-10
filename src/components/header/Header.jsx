@@ -5,78 +5,63 @@ import IconHeaderRight from '../common/icons/IconHeaderRight'
 import MenuIcon from '../common/icons/MenuIcon'
 import MobileMenuModal from './MobileMenuModal'
 const data = {
-    navbarItems: [
+    Movies: [
         {
-            id: 1,
-            name: 'Shop',
-            link: '#',
-            dropdown: true,
-            dropdownItems: [
-                {
-                    id: 1,
-                    name: 'Men',
-                    shoes: [
-                        {
-                            id: 101,
-                            name: 'Air Runner',
-                            brand: 'Nike',
-                            shortDescription: 'Lightweight running shoes for everyday training.'
-                        },
-                        {
-                            id: 102,
-                            name: 'Ultraboost',
-                            brand: 'Adidas',
-                            shortDescription: 'Responsive cushioning for long-distance comfort.'
-                        }
-                    ]
-                },
-                {
-                    id: 2,
-                    name: 'Women',
-                    shoes: [
-                        {
-                            id: 201,
-                            name: 'Cloudswift',
-                            brand: 'On',
-                            shortDescription: 'A cushioned road shoe for daily runs.'
-                        },
-                        {
-                            id: 202,
-                            name: 'Fresh Foam 1080',
-                            brand: 'New Balance',
-                            shortDescription: 'Soft, supportive comfort for everyday wear.'
-                        }
-                    ]
-                },
-            ]
+            ID: 0,
+            Title: "Mr.",
+            Description: "DefaultStringValue",
+            Image: "0.20",
+            GenreName: "Comedy",
+            Director: "DefaultStringValue",
+            Writer: "DefaultStringValue",
+            Producer: "DefaultStringValue",
+            ReleaseDate: "1967-01-01T00:00:00",
+            Rating: 1,
+            TrailerURI: "https://example.com",
+            Genre: "Comedy"
         },
-        { id: 2, name: 'New Arrivals', link: '#', dropdown: false },
-        { id: 3, name: 'Collections', link: '#', dropdown: false },
-        { id: 4, name: 'About', link: '#', dropdown: false },
-        { id: 5, name: 'Blog', link: '#', dropdown: false },
-        { id: 6, name: 'Contact', link: '#', dropdown: false }
+        {
+            ID: 1,
+            Title: "@@E5PrP",
+            Description: "DefaultStringValue",
+            Image: "1.20",
+            GenreName: "Comedy",
+            Director: "DefaultStringValue",
+            Writer: "DefaultStringValue",
+            Producer: "DefaultStringValue",
+            ReleaseDate: "1967-01-01T00:00:00",
+            Rating: 1,
+            TrailerURI: "https://example.com",
+            Genre: "Comedy"
+        },
+        {
+            ID: 2,
+            Title: "Ted 2",
+            Description: "Newlywed couple Ted and Tami-Lynn want to have a baby.",
+            Image: "ted2.jpg",
+            GenreName: "Comedy",
+            Director: "Seth MacFarlane",
+            Writer: "Seth MacFarlane",
+            Producer: "Jason Clark",
+            ReleaseDate: "2015-06-27T00:00:00",
+            Rating: 4,
+            TrailerURI: "https://www.youtube.com/watch?v=S3AVcCggRnU",
+            Genre: "Comedy"
+        }
     ]
 }
 
 
 
 const Header = () => {
-    const [isOpenDropdown, setIsOpenDropdown] = useState(false);
     const renderNavbar = () => {
-    const arrNavbar = data.navbarItems.map((item) => {
-        return (
-            item.dropdown ? (
-            <NavBar1 key={item.id} item={item} isOpen={isOpenDropdown} onMouseEnter={() => setIsOpenDropdown(true)}
-  onMouseLeave={() => setIsOpenDropdown(false)}
-                onToggle={() => setIsOpenDropdown((open) => !open)}
-            />
-            ) : (
-            <NavBar1 key={item.id} item={item} />
+        const arrNavbar = data.Movies.map((item) => {
+            return (
+                <NavBar1 key={item.id} item={item} />
             )
-        )
-    })
-    return arrNavbar;
-}
+        })
+        return arrNavbar;
+    }
     return (
         <header className="header">
             <div className='container'>
